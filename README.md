@@ -51,15 +51,15 @@ To run Newman, ensure that you have Node.js >= v10. [Install Node.js via package
 ### Installation
 The easiest way to install Newman is using NPM. If you have Node.js installed, it is most likely that you have NPM installed as well.
 
-```console
-$ npm install -g newman
+```bash
+npm install -g newman
 ```
 This installs Newman globally on your system allowing you to run it from anywhere. If you want to install it locally, Just remove the `-g` flag.
 
 #### Using Homebrew
 Install Newman globally on your system using Homebrew.
-```console
-$ brew install newman
+```bash
+brew install newman
 ```
 
 [back to top](#table-of-contents)
@@ -70,15 +70,15 @@ $ brew install newman
 The `newman run` command allows you to specify a collection to be run. You can easily export your Postman
 Collection as a json file from the [Postman App](https://www.postman.com/downloads/) and run it using Newman.
 
-```console
-$ newman run examples/sample-collection.json
+```bash
+newman run examples/sample-collection.json
 ```
 
 If your collection file is available as an URL (such as from our [Cloud API service](https://api.getpostman.com)),
 Newman can fetch your file and run it as well.
 
-```console
-$ newman run https://www.getpostman.com/collections/631643-f695cab7-6878-eb55-7943-ad88e1ccfd65-JsLv
+```bash
+newman run https://www.getpostman.com/collections/631643-f695cab7-6878-eb55-7943-ad88e1ccfd65
 ```
 
 For the complete list of options, refer the [Command Line Options](#command-line-options) section below.
@@ -109,8 +109,8 @@ Reporters can be configured using the `-r` or `--reporters` options. Inbuilt rep
 
 CLI reporter is enabled by default when Newman is used as a CLI, you do not need to specifically provide the same as part of reporters option. However, enabling one or more of the other reporters will result in no CLI output. Explicitly enable the CLI option in such a scenario. Check the example given below using the CLI and JSON reporters:
 
-```console
-$ newman run examples/sample-collection.json -r cli,json
+```bash
+newman run examples/sample-collection.json -r cli,json
 ```
 
 For more details on [Reporters](#reporters) and writing your own [External Reporters](#external-reporters) refer to their corresponding sections below.
@@ -450,8 +450,7 @@ such a scenario.
 
 | CLI Option  | Description       |
 |-------------|-------------------|
-| `--reporter-cli-silent`         | The CLI reporter is internally disabled and you see no output to terminal. |
-
+| `--reporter-cli-silent`         | The CLI reporter is internally disabled and you see no output to terminal.|
 | `--reporter-cli-show-timestamps` | This prints the local time for each request made. |
 | `--reporter-cli-no-summary`     | The statistical summary table is not shown. |
 | `--reporter-cli-no-failures`    | This prevents the run failures from being separately printed. |
@@ -495,13 +494,13 @@ how Newman reporters work can be found in [lib/reporters](https://github.com/pos
 For instance, to use the [Newman HTML Reporter](https://github.com/postmanlabs/newman-reporter-html):
 
 - Install the reporter package. Note that the name of the package is of the form `newman-reporter-<name>`. The installation should be global if Newman is installed globally, local otherwise. (Remove `-g` flag from the command below for a local installation.)
-```console
-$ npm install -g newman-reporter-html
+```bash
+npm install -g newman-reporter-html
 ```
 
 - Use the installed reporter, either via the CLI, or programmatic usage. Here, the `newman-reporter` prefix is **not** required while specifying the reporter name in the options.<br/>
-```console
-$ newman run /path/to/collection.json -r cli,html
+```bash
+newman run /path/to/collection.json -r cli,html
 ```
 ```javascript
 const newman = require('newman');
@@ -518,8 +517,8 @@ Several members of the Postman community have created custom reporters offering 
 
 Once the custom reporter NPM package has been installed either globally or locally, this can be then used with Newman in the following ways:
 
-```console
-$ newman run /path/to/collection.json -r htmlextra,csv
+```bash
+newman run /path/to/collection.json -r htmlextra,csv
 ```
 
 ```javascript
@@ -618,8 +617,8 @@ $ newman run file-upload.postman_collection.json
 3 Get the collection link via it's `uid`: `https://api.getpostman.com/collections/$uid?apikey=$apiKey`<br/>
 4 Obtain the environment URI from: `https://api.getpostman.com/environments?apikey=$apiKey`<br/>
 5 Using the collection and environment URIs acquired in steps 3 and 4, run the collection as follows:
-```console
-$ newman run "https://api.getpostman.com/collections/$uid?apikey=$apiKey" \
+```bash
+newman run "https://api.getpostman.com/collections/$uid?apikey=$apiKey" \
     --environment "https://api.getpostman.com/environments/$uid?apikey=$apiKey"
 ```
 
